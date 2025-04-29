@@ -1,1544 +1,657 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Access in Vallejo: A Comprehensive Analysis</title>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make all section headings more interactive
-            const headings = document.querySelectorAll('h2, h3, h4');
-            headings.forEach(heading => {
-                if (heading.id) {
-                    heading.style.cursor = 'pointer';
-                    heading.title = 'Click to copy link to this section';
-                    heading.addEventListener('click', function() {
-                        const url = window.location.href.split('#')[0] + '#' + heading.id;
-                        navigator.clipboard.writeText(url);
-                        
-                        // Create and show tooltip
-                        const tooltip = document.createElement('div');
-                        tooltip.textContent = 'Link copied!';
-                        tooltip.style.position = 'absolute';
-                        tooltip.style.left = (heading.offsetLeft + heading.offsetWidth/2) + 'px';
-                        tooltip.style.top = (heading.offsetTop - 30) + 'px';
-                        tooltip.style.backgroundColor = 'var(--primary-color)';
-                        tooltip.style.color = 'white';
-                        tooltip.style.padding = '5px 10px';
-                        tooltip.style.borderRadius = '3px';
-                        tooltip.style.zIndex = '1000';
-                        tooltip.style.transform = 'translateX(-50%)';
-                        tooltip.style.opacity = '0';
-                        tooltip.style.transition = 'opacity 0.3s';
-                        
-                        document.body.appendChild(tooltip);
-                        setTimeout(() => tooltip.style.opacity = '1', 10);
-                        
-                        setTimeout(() => {
-                            tooltip.style.opacity = '0';
-                            setTimeout(() => document.body.removeChild(tooltip), 300);
-                        }, 2000);
-                    });
-                }
-            });
-        });
-    </script>
-    <style>
-        :root {
-            --primary-color: #2c6e49;
-            --secondary-color: #4c956c;
-            --accent-color: #fefee3;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --border-color: #ddd;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            background-color: #ffffff;
-        }
-        
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 0 0 10px 10px;
-            margin-bottom: 2rem;
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            background-color: var(--secondary-color);
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            position: sticky;
-            top: 10px;
-            z-index: 100;
-        }
-        
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        nav li {
-            padding: 0;
-        }
-        
-        nav a {
-            display: block;
-            padding: 1rem;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        nav a:hover {
-            background-color: var(--primary-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        nav a:active {
-            transform: translateY(2px);
-            box-shadow: 0 0 2px rgba(0,0,0,0.2);
-        }
-        
-        main {
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 2rem;
-        }
-        
-        .toc {
-            background-color: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 5px;
-            position: sticky;
-            top: 80px;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-            align-self: start;
-        }
-        
-        .toc h2 {
-            margin-top: 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            font-size: 1.3rem;
-        }
-        
-        .toc ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        .toc ul ul {
-            padding-left: 1.5rem;
-        }
-        
-        .toc li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .toc a {
-            text-decoration: none;
-            color: var(--primary-color);
-            display: inline-block;
-            padding: 3px 0;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        
-        .toc a:hover {
-            color: var(--secondary-color);
-            transform: translateX(3px);
-        }
-        
-        .toc a:active {
-            color: #1a4c30;
-        }
-        
-        .content-area {
-            background-color: white;
-        }
-        
-        .content-area section {
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .content-area h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            font-size: 1.8rem;
-        }
-        
-        .content-area h3 {
-            color: var(--secondary-color);
-            margin-top: 1.5rem;
-            font-size: 1.4rem;
-        }
-        
-        .content-area h4 {
-            font-size: 1.2rem;
-            margin-top: 1.2rem;
-        }
-        
-        p {
-            margin: 1rem 0;
-        }
-        
-        .content-area ul, .content-area ol {
-            padding-left: 1.5rem;
-        }
-        
-        .content-area li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        
-        .data-table th {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: left;
-            padding: 0.75rem;
-        }
-        
-        .data-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .data-table tr:nth-child(even) {
-            background-color: var(--light-gray);
-        }
-        
-        .quote {
-            background-color: var(--accent-color);
-            padding: 1rem 1.5rem;
-            border-left: 4px solid var(--secondary-color);
-            margin: 1.5rem 0;
-            font-style: italic;
-        }
-        
-        .highlight-box {
-            background-color: var(--light-gray);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .highlight-box h4 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-        
-        .key-finding {
-            background-color: rgba(44, 110, 73, 0.1);
-            border-left: 4px solid var(--primary-color);
-            padding: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .key-finding h4 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-        
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        
-        .chart-container {
-            background-color: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 5px;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-        
-        .chart-placeholder {
-            background-color: #e0e0e0;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            color: #666;
-        }
-        
-        footer {
-            margin-top: 3rem;
-            padding: 2rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            border-radius: 10px 10px 0 0;
-        }
-        
-        @media (max-width: 900px) {
-            main {
-                grid-template-columns: 1fr;
-            }
-            
-            .toc {
-                position: static;
-                margin-bottom: 2rem;
-            }
-            
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Food Access in Vallejo: A Comprehensive Analysis</h1>
-        <p>Examining barriers to healthy food access and their impact on community well-being</p>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#introduction" onclick="document.getElementById('introduction').scrollIntoView({behavior: 'smooth'}); return false;">Introduction</a></li>
-            <li><a href="#barriers" onclick="document.getElementById('barriers').scrollIntoView({behavior: 'smooth'}); return false;">Access Barriers</a></li>
-            <li><a href="#survey-results" onclick="document.getElementById('survey-results').scrollIntoView({behavior: 'smooth'}); return false;">Survey Results</a></li>
-            <li><a href="#equity-issues" onclick="document.getElementById('equity-issues').scrollIntoView({behavior: 'smooth'}); return false;">Equity Issues</a></li>
-            <li><a href="#conclusion" onclick="document.getElementById('conclusion').scrollIntoView({behavior: 'smooth'}); return false;">Conclusion</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <aside class="toc">
-            <h2>Table of Contents</h2>
-            <ul>
-                <li><a href="#introduction" onclick="document.getElementById('introduction').scrollIntoView({behavior: 'smooth'}); return false;">Introduction</a></li>
-                <li>
-                    <a href="#barriers" onclick="document.getElementById('barriers').scrollIntoView({behavior: 'smooth'}); return false;">Barriers to Accessing Healthy Food</a>
-                    <ul>
-                        <li><a href="#store-location" onclick="document.getElementById('store-location').scrollIntoView({behavior: 'smooth'}); return false;">Store Location & Transportation</a></li>
-                        <li><a href="#affordability" onclick="document.getElementById('affordability').scrollIntoView({behavior: 'smooth'}); return false;">Affordability</a></li>
-                        <li><a href="#lack-full-service" onclick="document.getElementById('lack-full-service').scrollIntoView({behavior: 'smooth'}); return false;">Lack of Full-Service Grocery Stores</a></li>
-                        <li><a href="#meal-adaptation" onclick="document.getElementById('meal-adaptation').scrollIntoView({behavior: 'smooth'}); return false;">Lack of Access Leads to Adapting Meals</a></li>
-                        <li><a href="#poor-quality" onclick="document.getElementById('poor-quality').scrollIntoView({behavior: 'smooth'}); return false;">Poor Food Quality</a></li>
-                        <li><a href="#donated-foods" onclick="document.getElementById('donated-foods').scrollIntoView({behavior: 'smooth'}); return false;">Problems with Donated Foods</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#survey-results" onclick="document.getElementById('survey-results').scrollIntoView({behavior: 'smooth'}); return false;">Survey Results</a>
-                    <ul>
-                        <li><a href="#store-types" onclick="document.getElementById('store-types').scrollIntoView({behavior: 'smooth'}); return false;">Types of Stores</a></li>
-                        <li><a href="#produce-availability" onclick="document.getElementById('produce-availability').scrollIntoView({behavior: 'smooth'}); return false;">Produce Availability</a></li>
-                        <li><a href="#fresh-produce" onclick="document.getElementById('fresh-produce').scrollIntoView({behavior: 'smooth'}); return false;">Fresh Produce Access</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#equity-issues" onclick="document.getElementById('equity-issues').scrollIntoView({behavior: 'smooth'}); return false;">Environmental Justice & Equity</a>
-                    <ul>
-                        <li><a href="#environmental-justice" onclick="document.getElementById('environmental-justice').scrollIntoView({behavior: 'smooth'}); return false;">Environmental Justice/Environmental Racism</a></li>
-                        <li><a href="#health-communities" onclick="document.getElementById('health-communities').scrollIntoView({behavior: 'smooth'}); return false;">Health of Communities of Color</a></li>
-                    </ul>
-                </li>
-                <li><a href="#conclusion" onclick="document.getElementById('conclusion').scrollIntoView({behavior: 'smooth'}); return false;">Conclusion & Recommendations</a></li>
-            </ul>
-        </aside>
-        
-        <div class="content-area">
-            <section id="introduction">
-                <h2>Introduction</h2>
-                <p>Access to healthy, affordable, and culturally appropriate food is a fundamental component of community well-being. This comprehensive analysis examines the state of food access in Vallejo, California, with particular attention to disparities between neighborhoods of different socioeconomic status. The research combines community focus groups with 33 participants and a detailed survey of 70 food stores throughout the city.</p>
-                
-                <div class="key-finding">
-                    <h4>Key Context</h4>
-                    <p>Vallejo has a higher than average population of people of color and demonstrates significant challenges in food access that disproportionately affect low-income neighborhoods. These challenges represent a form of environmental inequity that impacts the health and well-being of residents.</p>
-                </div>
-                
-                <p>The study specifically focuses on access to fruits, vegetables, and non-dairy/meat alternatives, excluding comments related to dairy products and meat to maintain focus on healthy food alternatives.</p>
-            </section>
-            
-            <section id="barriers">
-                <h2>Barriers to Accessing Healthy Food</h2>
-                
-                <p>Through focus groups with 33 Vallejo residents, researchers identified six major barriers to accessing healthy food in the community. These barriers interact with each other, compounding the challenges faced by residents, particularly those in low-income neighborhoods.</p>
-                
-                <div id="store-location">
-                    <h3>Store Location & Transportation</h3>
-                    <p>Residents described significant challenges to purchasing food due to the inconvenient location of stores in their neighborhoods. The geographic barriers include:</p>
-                    <ul>
-                        <li>Food stores located too far from residences</li>
-                        <li>Neighborhoods without adequate sidewalk infrastructure</li>
-                        <li>Unsafe streets due to traffic conditions</li>
-                        <li>Stores located in hills or different communities</li>
-                    </ul>
-                    
-                    <p>These location issues force residents to either shop at convenience stores or patronize shops with fewer food options. Transportation limitations further exacerbate the problem:</p>
-                    
-                    <div class="quote">
-                        "I personally think they're [stores] too far to walk, especially."
-                    </div>
-                    
-                    <div class="quote">
-                        "Riding the bus, I can only have one batch as I have a purse. Usually the bus doesn't stop right in front of you, kind of down a block. So, there's a walking distance you have to walk through like 2–3 streets away."
-                    </div>
-                    
-                    <p>The difficulty of transporting groceries without a car limits the amount of food that can be purchased at once and necessitates more frequent shopping trips:</p>
-                    
-                    <div class="quote">
-                        "… Maria, she has a cart. And then when I have my grandkids, I have a stroller and I put everything in the stroller and sometimes I have to not buy that much and just get what I need for the day. So you know, not that much."
-                    </div>
-                </div>
-                
-                <div id="affordability">
-                    <h3>Affordability</h3>
-                    <p>Cost represents a significant barrier to accessing healthy food in Vallejo. Several factors contribute to this issue:</p>
-                    
-                    <ul>
-                        <li>High standard cost of living in the Bay Area</li>
-                        <li>Limited shopping options leading to reliance on convenience stores with higher prices</li>
-                        <li>Small, local markets charging premium prices</li>
-                    </ul>
-                    
-                    <div class="quote">
-                        "[Small, local grocery stores] are my closest stores; we only do small shopping there as things are pricier."
-                    </div>
-                    
-                    <div class="quote">
-                        "Oftentimes we don't buy specific (healthy) foods because of its cost."
-                    </div>
-                    
-                    <p>The combination of transportation limitations and lack of full-service grocery stores in certain neighborhoods forces many residents to rely on more expensive local shops:</p>
-                    
-                    <div class="quote">
-                        "Both (smaller, local stores) have mainly everything but like I said less quality for a higher price."
-                    </div>
-                    
-                    <p>The price premium for organic options presents an additional barrier for those seeking healthier options:</p>
-                    
-                    <div class="quote">
-                        "Especially when it is organic. It is usually more expensive. So I usually buy the less expensive ones 'cause it is cheaper."
-                    </div>
-                </div>
-                
-                <div id="lack-full-service">
-                    <h3>Lack of Full-Service Grocery Stores</h3>
-                    <p>Across Vallejo, residents reported a scarcity of options for purchasing food. The limited full-service grocery stores include:</p>
-                    
-                    <ul>
-                        <li>Grocery Outlet</li>
-                        <li>The Dollar Store</li>
-                        <li>99 Cents Only Store</li>
-                        <li>Smart & Final</li>
-                        <li>Safeway (often noted as too expensive)</li>
-                    </ul>
-                    
-                    <p>In addition to these stores, residents purchase food at small local businesses, though these often come with higher prices and limited selection.</p>
-                    
-                    <p>The loss of key grocery stores, such as Raley's, has further limited access to quality food options:</p>
-                    
-                    <div class="quote">
-                        "This town should have a health food store and organic market like Marin County where I'm from, but I don't see any other place here where I can pick up that kind of food. Raley's is going out (of business), you know, they had real good quality stuff there."
-                    </div>
-                </div>
-                
-                <div id="meal-adaptation">
-                    <h3>Lack of Access Leads to Adapting Meals</h3>
-                    <p>The limited availability of ingredients forces residents to adapt their meal planning and cooking. Participants described having to:</p>
-                    
-                    <ul>
-                        <li>Change planned meals due to missing ingredients</li>
-                        <li>Visit multiple stores to gather all needed items</li>
-                        <li>Abandon certain recipes due to the effort required to source ingredients</li>
-                    </ul>
-                    
-                    <div class="quote">
-                        "Disappointed, if I'm wanting to make something or do something and I can't make it then I'm disappointed."
-                    </div>
-                    
-                    <div class="quote">
-                        "If I have to cook a meal, and then, man, I have to go to Food Max for this and then the Filipino place for that, do I give up that meal? Sometimes I do; it's not worth it for me to do all that."
-                    </div>
-                    
-                    <p>Most focus group participants discussed visiting multiple stores to acquire the food they need, sharing tips on where to find the cheapest and best quality produce and food products, including cauliflower, peppers, green beans, avocados, and tortillas.</p>
-                </div>
-                
-                <div id="poor-quality">
-                    <h3>Poor Food Quality</h3>
-                    <p>Stores that sell food but are not full-service grocery stores frequently have food options of poor quality, making them less desirable for cooking. Quality issues include:</p>
-                    
-                    <ul>
-                        <li>Rotten or spoiled produce</li>
-                        <li>Expired food products</li>
-                        <li>Deceptive practices (moving expired products to the front)</li>
-                    </ul>
-                    
-                    <div class="quote">
-                        "Yeah, old burritos, yeah, they put the new ones in the back and the old ones in the front."
-                    </div>
-                    
-                    <div class="quote">
-                        "The thing is, though, you have to eat it (the food) right away, the 99 cent store, you cannot store it (the food); it will go bad."
-                    </div>
-                    
-                    <p>These quality issues create frustration and mistrust toward local food retailers and further limit viable food options for residents.</p>
-                </div>
-                
-                <div id="donated-foods">
-                    <h3>Problems with Donated Foods</h3>
-                    <p>While many participants expressed appreciation for local food banks that increase access to affordable foods, the quality of donated items was frequently problematic:</p>
-                    
-                    <ul>
-                        <li>Bread and vegetables that were rotten or moldy</li>
-                        <li>Substandard food through church donation programs</li>
-                        <li>Expired canned food products</li>
-                    </ul>
-                    
-                    <p>The Food Empowerment Project (F.E.P.) expressed particular concern that organizations professing to provide for the nutritional needs of low-income and elderly people are in some cases providing food that could worsen their situation. Though beyond the scope of this study, the practices of food banks and other food donation centers deserve further scrutiny.</p>
-                </div>
-            </section>
-            
-            <section id="survey-results">
-                <h2>Survey Results</h2>
-                
-                <p>To complement the qualitative focus group data, researchers conducted a comprehensive survey of 70 food retail establishments throughout Vallejo. The findings highlight systemic issues in food access that disproportionately impact low-income neighborhoods.</p>
-                
-                <div id="store-types">
-                    <h3>Types of Stores</h3>
-                    
-                    <p>The distribution of store types varies significantly between high-income and low-income neighborhoods, with concerning implications for food access:</p>
-                    
-                    <div class="two-column">
-                        <div class="chart-container">
-                            <h4>Low-Income Neighborhoods</h4>
-                            <ul>
-                                <li>Grocery Stores: 12%</li>
-                                <li>Convenience Stores: 46%</li>
-                                <li>Liquor Stores: 29%</li>
-                                <li>Specialty Stores: 13%</li>
-                            </ul>
-                            <p><strong>Total: 48 stores</strong></p>
-                        </div>
-                        
-                        <div class="chart-container">
-                            <h4>High-Income Neighborhoods</h4>
-                            <ul>
-                                <li>Grocery Stores: 36%</li>
-                                <li>Convenience Stores: 41%</li>
-                                <li>Liquor Stores: 9%</li>
-                                <li>Specialty Stores: 14%</li>
-                            </ul>
-                            <p><strong>Total: 22 stores</strong></p>
-                        </div>
-                    </div>
-                    
-                    <div class="key-finding">
-                        <h4>Key Finding</h4>
-                        <p>Eighty-eight percent of all liquor stores and 71% of all convenience stores in Vallejo are located in low-income neighborhoods. There is a liquor store for every 2,769 residents in low-income areas, compared to every 51,041 residents in high-income neighborhoods.</p>
-                    </div>
-                    
-                    <p>In low-income neighborhoods, three-quarters (75.5%) of all stores are liquor stores, corner stores, or convenience stores. Of these 35 stores, about one-third sell no produce or fewer than 5 types of produce. Sixty percent of those stores that do sell produce provide all or almost all of it only in cans. However, 91% of these stores sell beer, wine and/or liquor.</p>
-                </div>
-                
-                <div id="produce-availability">
-                    <h3>Produce Availability</h3>
-                    
-                    <p>The study recorded the availability of 119 types of fruits and vegetables in fresh, frozen, and canned/jarred versions across the surveyed stores. Key findings include:</p>
-                    
-                    <ul>
-                        <li>In high-income areas, about 22.7% of stores had fewer than 10 types of produce available in any version</li>
-                        <li>In low-income neighborhoods, 50% of stores had fewer than 10 types of produce</li>
-                    </ul>
-                    
-                    <p>This disparity highlights that despite having more stores numerically (48 compared to 22), low-income neighborhoods have reduced access to produce variety because the additional stores tend to be liquor, corner, and convenience stores with limited fresh food options.</p>
-                    
-                    <div class="highlight-box">
-                        <h4>Store Grading Methodology</h4>
-                        <p>Each store received a grade based on five criteria:</p>
-                        <ol>
-                            <li>Variety of produce available</li>
-                            <li>Amount of produce available in fresh versions</li>
-                            <li>Amount of produce available in organic versions</li>
-                            <li>Amount of produce available only in conventional versions</li>
-                            <li>Amount of produce available only in canned/jarred versions</li>
-                        </ol>
-                        <p>Grades ranged from A to F, with higher grades indicating better overall access and quality.</p>
-                    </div>
-                    
-                    <div class="key-finding">
-                        <h4>Store Grading Results</h4>
-                        <p>No stores in Vallejo received an "A" grade. The stores with the best grades (B) tended to be grocery stores located in higher-income areas. In low-income areas, stores with a middling grade of C were primarily grocery stores clustered in the central-northern part of Vallejo, leaving many in the southern and southwestern neighborhoods without easy access to a grocery store.</p>
-                    </div>
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Produce Type</th>
-                                <th>Version</th>
-                                <th>Low Income (FPL ≥ 20%)</th>
-                                <th>High Income</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="2">Fresh Fruits</td>
-                                <td>Conventional</td>
-                                <td>54.2%</td>
-                                <td>50.0%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>4.2%</td>
-                                <td>18.2%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Fresh Vegetables</td>
-                                <td>Conventional</td>
-                                <td>43.8%</td>
-                                <td>54.5%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>16.7%</td>
-                                <td>27.3%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Frozen Fruits</td>
-                                <td>Conventional</td>
-                                <td>18.8%</td>
-                                <td>27.3%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>2.1%</td>
-                                <td>18.2%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Frozen Vegetables</td>
-                                <td>Conventional</td>
-                                <td>29.2%</td>
-                                <td>54.5%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>6.3%</td>
-                                <td>22.7%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Canned Fruits</td>
-                                <td>Conventional</td>
-                                <td>83.3%</td>
-                                <td>86.4%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>10.5%</td>
-                                <td>13.6%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Canned Vegetables</td>
-                                <td>Conventional</td>
-                                <td>85.5%</td>
-                                <td>95.5%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>18.8%</td>
-                                <td>40.9%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div id="fresh-produce">
-                    <h3>Fresh Produce Access</h3>
-                    
-                    <p>Fresh produce is particularly important for healthy meal preparation and snacking. The survey found significant barriers to accessing fresh produce in Vallejo:</p>
-                    
-                    <ul>
-                        <li>Over 25% of stores in both high and low-income neighborhoods have no fresh produce available</li>
-                        <li>Only 10 stores throughout Vallejo have salad bars</li>
-                        <li>While 40.9% of stores in high-income areas promote fresh produce through endcaps and special displays, only 16.7% of stores in low-income neighborhoods do the same</li>
-                    </ul>
-                    
-                    <div class="key-finding">
-                        <h4>Cleanliness Concerns</h4>
-                        <p>Over 50% of stores in low-income neighborhoods were evaluated as not providing "a clean and sanitary environment for fresh fruits and vegetables," further limiting the appeal and safety of available produce.</p>
-                    </div>
-                    
-                    <p>The combination of limited availability, poor quality, and sanitation concerns creates significant challenges for residents attempting to maintain healthy diets rich in fresh fruits and vegetables.</p>
-                </div>
-            </section>
-            
-            <section id="equity-issues">
-                <h2>Environmental Justice & Equity</h2>
-                
-                <div id="environmental-justice">
-                    <h3>Environmental Justice/Environmental Racism</h3>
-                    
-                    <p>The food access challenges in Vallejo represent a form of environmental injustice that disproportionately affects communities of color and low-income residents.</p>
-                    
-                    <div class="highlight-box">
-                        <h4>Defining Environmental Justice</h4>
-                        <p>In 1991, the First National People of Color Environmental Leadership Summit drafted and adopted 17 principles of environmental justice. In essence, environmental justice encompasses where "we live, work and play, go to school (and sometimes it includes to pray)."</p>
-                    </div>
-                    
-                    <p>Environmental racism includes both the intended and unintended consequences of environmental rules and regulations, which are often lax or unenforced, directly impacting people of color.</p>
-                    
-                    <div class="key-finding">
-                        <h4>Food Access as Environmental Racism</h4>
-                        <p>The lack of healthy foods in communities of color and low-income communities is something that the Food Empowerment Project views as a form of environmental racism. Simple terms such as "food deserts" and "food security issues" should not mask the huge problem that is the reality for many of those living in the United States.</p>
-                    </div>
-                </div>
-                
-                <div id="health-communities">
-                    <h3>Health of Communities of Color in California</h3>
-                    
-                    <h4>Lack of Access to Healthy Foods</h4>
-                    
-                    <p>The United States Department of Agriculture defines food deserts as:</p>
-                    
-                    <div class="quote">
-                        "[U]rban neighborhoods and rural towns without ready access to fresh, healthy, and affordable food. Instead of supermarkets and grocery stores, these communities may have no food access or are served only by fast food restaurants and convenience stores that offer few healthy, affordable food options."
-                    </div>
-                    
-                    <p>However, this definition has limitations. The Food Empowerment Project notes that this is a narrow view of the problem that doesn't account for:</p>
-                    
-                    <ul>
-                        <li>People who are time-poor as well as cash-poor</li>
-                        <li>The significant barrier that cost presents</li>
-                        <li>Cultural appropriateness of available foods</li>
-                    </ul>
-                    
-                    <p>A more comprehensive understanding recognizes that adequate access to food means that nutritious and culturally appropriate foods must be available on a consistent basis, at an affordable price, and within a reasonable distance among communities.</p>
-                </div>
-            </section>
-            
-            <section id="conclusion">
-                <h2>Conclusion & Recommendations</h2>
-                
-                <p>The comprehensive analysis of food access in Vallejo reveals systemic challenges that disproportionately affect low-income neighborhoods and communities of color. These issues represent a form of environmental injustice that impacts the health and well-being of residents.</p>
-                
-                <div class="key-finding">
-                    <h4>Summary of Key Findings</h4>
-                    <ul>
-                        <li>Low-income neighborhoods have a higher concentration of liquor stores and convenience stores with limited healthy -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Access in Vallejo: A Comprehensive Analysis</title>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make all section headings more interactive
-            const headings = document.querySelectorAll('h2, h3, h4');
-            headings.forEach(heading => {
-                if (heading.id) {
-                    heading.style.cursor = 'pointer';
-                    heading.title = 'Click to copy link to this section';
-                    heading.addEventListener('click', function() {
-                        const url = window.location.href.split('#')[0] + '#' + heading.id;
-                        navigator.clipboard.writeText(url);
-                        
-                        // Create and show tooltip
-                        const tooltip = document.createElement('div');
-                        tooltip.textContent = 'Link copied!';
-                        tooltip.style.position = 'absolute';
-                        tooltip.style.left = (heading.offsetLeft + heading.offsetWidth/2) + 'px';
-                        tooltip.style.top = (heading.offsetTop - 30) + 'px';
-                        tooltip.style.backgroundColor = 'var(--primary-color)';
-                        tooltip.style.color = 'white';
-                        tooltip.style.padding = '5px 10px';
-                        tooltip.style.borderRadius = '3px';
-                        tooltip.style.zIndex = '1000';
-                        tooltip.style.transform = 'translateX(-50%)';
-                        tooltip.style.opacity = '0';
-                        tooltip.style.transition = 'opacity 0.3s';
-                        
-                        document.body.appendChild(tooltip);
-                        setTimeout(() => tooltip.style.opacity = '1', 10);
-                        
-                        setTimeout(() => {
-                            tooltip.style.opacity = '0';
-                            setTimeout(() => document.body.removeChild(tooltip), 300);
-                        }, 2000);
-                    });
-                }
-            });
-        });
-    </script>
+    <title>Food Insecurity in Vallejo: Key Findings for PHE Program</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- =====================================================
+         Dark-theme Stylesheet – fully expanded for readability
+    ====================================================== -->
     <style>
         :root {
-            --primary-color: #2c6e49;
-            --secondary-color: #4c956c;
-            --accent-color: #fefee3;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --border-color: #ddd;
+            --primary-color-dark: #000000;
+            --primary-color-light: #ffffff;
+            --accent-color:        #2c57fa;
+            --additional-color:    #fa962c;
+            --background-color:    #000000;
+            --text-color:          #ffffff;
+            --shadow:              0 4px 8px rgba(0, 0, 0, 0.4);
         }
-        
-        html {
-            scroll-behavior: smooth;
+
+        /* ---------- Reset ---------- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        
+
+        /* ---------- Base ---------- */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 16px;
             line-height: 1.6;
             color: var(--text-color);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            background-color: #ffffff;
+            background-color: var(--background-color);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
-        
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 0 0 10px 10px;
-            margin-bottom: 2rem;
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            background-color: var(--secondary-color);
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            position: sticky;
-            top: 10px;
-            z-index: 100;
-        }
-        
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        nav li {
-            padding: 0;
-        }
-        
-        nav a {
-            display: block;
-            padding: 1rem;
-            color: white;
+
+        a {
+            color: inherit;
             text-decoration: none;
-            transition: all 0.3s;
-            border-radius: 5px;
-            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        nav a:hover {
-            background-color: var(--primary-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+        /* ---------- Layout ---------- */
+        .container {
+            max-width: 1500px;
+            margin-inline: auto;
+            padding: 20px;
         }
-        
-        nav a:active {
-            transform: translateY(2px);
-            box-shadow: 0 0 2px rgba(0,0,0,0.2);
-        }
-        
-        main {
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 2rem;
-        }
-        
-        .toc {
-            background-color: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 5px;
-            position: sticky;
-            top: 80px;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-            align-self: start;
-        }
-        
-        .toc h2 {
-            margin-top: 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            font-size: 1.3rem;
-        }
-        
-        .toc ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        .toc ul ul {
-            padding-left: 1.5rem;
-        }
-        
-        .toc li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .toc a {
-            text-decoration: none;
-            color: var(--primary-color);
-            display: inline-block;
-            padding: 3px 0;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        
-        .toc a:hover {
-            color: var(--secondary-color);
-            transform: translateX(3px);
-        }
-        
-        .toc a:active {
-            color: #1a4c30;
-        }
-        
-        .content-area {
-            background-color: white;
-        }
-        
-        .content-area section {
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .content-area h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            font-size: 1.8rem;
-        }
-        
-        .content-area h3 {
-            color: var(--secondary-color);
-            margin-top: 1.5rem;
-            font-size: 1.4rem;
-        }
-        
-        .content-area h4 {
-            font-size: 1.2rem;
-            margin-top: 1.2rem;
-        }
-        
-        p {
-            margin: 1rem 0;
-        }
-        
-        .content-area ul, .content-area ol {
-            padding-left: 1.5rem;
-        }
-        
-        .content-area li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        
-        .data-table th {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: left;
-            padding: 0.75rem;
-        }
-        
-        .data-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .data-table tr:nth-child(even) {
-            background-color: var(--light-gray);
-        }
-        
-        .quote {
-            background-color: var(--accent-color);
-            padding: 1rem 1.5rem;
-            border-left: 4px solid var(--secondary-color);
-            margin: 1.5rem 0;
-            font-style: italic;
-        }
-        
-        .highlight-box {
-            background-color: var(--light-gray);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .highlight-box h4 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-        
-        .key-finding {
-            background-color: rgba(44, 110, 73, 0.1);
-            border-left: 4px solid var(--primary-color);
-            padding: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .key-finding h4 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-        
+
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        .chart-container {
-            background-color: var(--light-gray);
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- Header ---------- */
+        header {
+            background-color: var(--primary-color-dark);
+            border: 1px solid var(--accent-color);
+            color: var(--primary-color-light);
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-weight: 500;
+            font-size: 32px;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-weight: 400;
+            font-size: 24px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .date-box {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color-light);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 400;
+            margin-top: 0.5rem;
+        }
+
+        /* ---------- Navigation ---------- */
+        nav {
+            background-color: var(--primary-color-dark);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--primary-color-light);
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* ---------- Sections ---------- */
+        section {
+            background-color: var(--primary-color-dark);
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-weight: 500;
+            color: var(--accent-color);
+            font-size: 32px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* ---------- Cards ---------- */
+        .finding-card {
+            background-color: rgba(44, 87, 250, 0.1);
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
             padding: 1.5rem;
-            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .finding-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .finding-card h4 {
+            font-weight: 500;
+            color: var(--additional-color);
+            margin-bottom: 1rem;
+            font-size: 24px;
+            border-bottom: 2px solid var(--additional-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .finding-card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .finding-card li {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color-light);
+            font-size: 16px;
+        }
+
+        /* ---------- Highlights & Quotes ---------- */
+        .highlight {
+            background-color: rgba(250, 150, 44, 0.1);
+            border-left: 4px solid var(--additional-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight h4 {
+            font-weight: 500;
+            font-size: 24px;
+            margin-top: 0;
+            color: var(--additional-color);
+        }
+
+        .quote {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.5rem;
+            border-left: 4px solid var(--additional-color);
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        /* ---------- Data Charts ---------- */
+        .data-chart {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.5rem;
             margin: 1.5rem 0;
             text-align: center;
         }
-        
-        .chart-placeholder {
-            background-color: #e0e0e0;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            color: #666;
+
+        .chart-title {
+            font-weight: 500;
+            font-size: 24px;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
         }
-        
-        footer {
-            margin-top: 3rem;
-            padding: 2rem;
-            background-color: var(--primary-color);
-            color: white;
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+            margin: 1rem auto;
+        }
+
+        .bar {
+            position: absolute;
+            bottom: 0;
+            border-radius: 4px 4px 0 0;
+            transition: height 1s ease;
+        }
+
+        .label {
+            position: absolute;
+            bottom: -25px;
             text-align: center;
-            border-radius: 10px 10px 0 0;
+            font-size: 16px;
+            color: var(--primary-color-light);
+            width: 100%;
         }
-        
-        @media (max-width: 900px) {
-            main {
-                grid-template-columns: 1fr;
+
+        .value {
+            position: absolute;
+            top: -25px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary-color-light);
+            width: 100%;
+        }
+
+        /* ---------- Tables ---------- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        table th {
+            background-color: var(--accent-color);
+            color: var(--primary-color-light);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--primary-color-dark);
+            border: 1px solid var(--accent-color);
+            color: var(--primary-color-light);
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* ---------- Print Styles ---------- */
+        @media print {
+            body {
+                background-color: #ffffff;
+                background-image: none;
+                color: #000000;
             }
-            
-            .toc {
-                position: static;
-                margin-bottom: 2rem;
+
+            .container {
+                max-width: 100%;
+                padding: 0;
             }
-            
-            .two-column {
-                grid-template-columns: 1fr;
+
+            header,
+            section,
+            .footer {
+                box-shadow: none;
+                border: 1px solid var(--accent-color);
+            }
+
+            nav {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Food Access in Vallejo: A Comprehensive Analysis</h1>
-        <p>Examining barriers to healthy food access and their impact on community well-being</p>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#introduction" onclick="document.getElementById('introduction').scrollIntoView({behavior: 'smooth'}); return false;">Introduction</a></li>
-            <li><a href="#barriers" onclick="document.getElementById('barriers').scrollIntoView({behavior: 'smooth'}); return false;">Access Barriers</a></li>
-            <li><a href="#survey-results" onclick="document.getElementById('survey-results').scrollIntoView({behavior: 'smooth'}); return false;">Survey Results</a></li>
-            <li><a href="#equity-issues" onclick="document.getElementById('equity-issues').scrollIntoView({behavior: 'smooth'}); return false;">Equity Issues</a></li>
-            <li><a href="#conclusion" onclick="document.getElementById('conclusion').scrollIntoView({behavior: 'smooth'}); return false;">Conclusion</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <aside class="toc">
-            <h2>Table of Contents</h2>
+    <div class="container">
+        <!-- =================================================
+             Header
+        ================================================= -->
+        <header>
+            <h1>Food Insecurity in Vallejo</h1>
+            <h2>Key Findings for Public Health Education Program</h2>
+            <p>Synthesised data from community assessments and surveys</p>
+            <!-- <div class="date-box">29 Apr 2025 | Module 4, Session 7</div> -->
+        </header>
+
+        <!-- =================================================
+             Navigation
+        ================================================= -->
+        <nav aria-label="Main navigation">
             <ul>
-                <li><a href="#introduction" onclick="document.getElementById('introduction').scrollIntoView({behavior: 'smooth'}); return false;">Introduction</a></li>
-                <li>
-                    <a href="#barriers" onclick="document.getElementById('barriers').scrollIntoView({behavior: 'smooth'}); return false;">Barriers to Accessing Healthy Food</a>
-                    <ul>
-                        <li><a href="#store-location" onclick="document.getElementById('store-location').scrollIntoView({behavior: 'smooth'}); return false;">Store Location & Transportation</a></li>
-                        <li><a href="#affordability" onclick="document.getElementById('affordability').scrollIntoView({behavior: 'smooth'}); return false;">Affordability</a></li>
-                        <li><a href="#lack-full-service" onclick="document.getElementById('lack-full-service').scrollIntoView({behavior: 'smooth'}); return false;">Lack of Full-Service Grocery Stores</a></li>
-                        <li><a href="#meal-adaptation" onclick="document.getElementById('meal-adaptation').scrollIntoView({behavior: 'smooth'}); return false;">Lack of Access Leads to Adapting Meals</a></li>
-                        <li><a href="#poor-quality" onclick="document.getElementById('poor-quality').scrollIntoView({behavior: 'smooth'}); return false;">Poor Food Quality</a></li>
-                        <li><a href="#donated-foods" onclick="document.getElementById('donated-foods').scrollIntoView({behavior: 'smooth'}); return false;">Problems with Donated Foods</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#survey-results" onclick="document.getElementById('survey-results').scrollIntoView({behavior: 'smooth'}); return false;">Survey Results</a>
-                    <ul>
-                        <li><a href="#store-types" onclick="document.getElementById('store-types').scrollIntoView({behavior: 'smooth'}); return false;">Types of Stores</a></li>
-                        <li><a href="#produce-availability" onclick="document.getElementById('produce-availability').scrollIntoView({behavior: 'smooth'}); return false;">Produce Availability</a></li>
-                        <li><a href="#fresh-produce" onclick="document.getElementById('fresh-produce').scrollIntoView({behavior: 'smooth'}); return false;">Fresh Produce Access</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#equity-issues" onclick="document.getElementById('equity-issues').scrollIntoView({behavior: 'smooth'}); return false;">Environmental Justice & Equity</a>
-                    <ul>
-                        <li><a href="#environmental-justice" onclick="document.getElementById('environmental-justice').scrollIntoView({behavior: 'smooth'}); return false;">Environmental Justice/Environmental Racism</a></li>
-                        <li><a href="#health-communities" onclick="document.getElementById('health-communities').scrollIntoView({behavior: 'smooth'}); return false;">Health of Communities of Color</a></li>
-                    </ul>
-                </li>
-                <li><a href="#conclusion" onclick="document.getElementById('conclusion').scrollIntoView({behavior: 'smooth'}); return false;">Conclusion & Recommendations</a></li>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#barriers">Access Barriers</a></li>
+                <li><a href="#geographic">Geographic Disparities</a></li>
+                <li><a href="#academic">Academic Impact</a></li>
+                <li><a href="#mental-health">Mental Health</a></li>
+                <li><a href="#behavior">Behavioural Impact</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
             </ul>
-        </aside>
-        
-        <div class="content-area">
-            <section id="introduction">
-                <h2>Introduction</h2>
-                <p>Access to healthy, affordable, and culturally appropriate food is a fundamental component of community well-being. This comprehensive analysis examines the state of food access in Vallejo, California, with particular attention to disparities between neighborhoods of different socioeconomic status. The research combines community focus groups with 33 participants and a detailed survey of 70 food stores throughout the city.</p>
-                
-                <div class="key-finding">
-                    <h4>Key Context</h4>
-                    <p>Vallejo has a higher than average population of people of color and demonstrates significant challenges in food access that disproportionately affect low-income neighborhoods. These challenges represent a form of environmental inequity that impacts the health and well-being of residents.</p>
-                </div>
-                
-                <p>The study specifically focuses on access to fruits, vegetables, and non-dairy/meat alternatives, excluding comments related to dairy products and meat to maintain focus on healthy food alternatives.</p>
-            </section>
-            
-            <section id="barriers">
-                <h2>Barriers to Accessing Healthy Food</h2>
-                
-                <p>Through focus groups with 33 Vallejo residents, researchers identified six major barriers to accessing healthy food in the community. These barriers interact with each other, compounding the challenges faced by residents, particularly those in low-income neighborhoods.</p>
-                
-                <div id="store-location">
-                    <h3>Store Location & Transportation</h3>
-                    <p>Residents described significant challenges to purchasing food due to the inconvenient location of stores in their neighborhoods. The geographic barriers include:</p>
+        </nav>
+
+        <!-- =================================================
+             Overview Section
+        ================================================= -->
+        <section id="overview">
+            <h2 class="section-title">Overview: The State of Food Insecurity</h2>
+            <p>Food insecurity remains a significant challenge for many Vallejo residents, particularly in low-income neighbourhoods. Our comprehensive analysis reveals systemic issues that disproportionately affect certain communities and impact educational outcomes, health, and overall quality of life.</p>
+            <div class="highlight">
+                <h4>Key Context</h4>
+                <p>Approximately 73 % of students in Vallejo City Unified School District qualify for free or reduced-price meals, and surveys show that more than half of Vallejo secondary students regularly skip breakfast. These indicators point to widespread food-access challenges throughout the community.</p>
+            </div>
+            <div class="two-column">
+                <div class="finding-card">
+                    <h4>Prevalence Among Youth</h4>
                     <ul>
-                        <li>Food stores located too far from residences</li>
-                        <li>Neighborhoods without adequate sidewalk infrastructure</li>
-                        <li>Unsafe streets due to traffic conditions</li>
-                        <li>Stores located in hills or different communities</li>
-                    </ul>
-                    
-                    <p>These location issues force residents to either shop at convenience stores or patronize shops with fewer food options. Transportation limitations further exacerbate the problem:</p>
-                    
-                    <div class="quote">
-                        "I personally think they're [stores] too far to walk, especially."
-                    </div>
-                    
-                    <div class="quote">
-                        "Riding the bus, I can only have one batch as I have a purse. Usually the bus doesn't stop right in front of you, kind of down a block. So, there's a walking distance you have to walk through like 2–3 streets away."
-                    </div>
-                    
-                    <p>The difficulty of transporting groceries without a car limits the amount of food that can be purchased at once and necessitates more frequent shopping trips:</p>
-                    
-                    <div class="quote">
-                        "… Maria, she has a cart. And then when I have my grandkids, I have a stroller and I put everything in the stroller and sometimes I have to not buy that much and just get what I need for the day. So you know, not that much."
-                    </div>
-                </div>
-                
-                <div id="affordability">
-                    <h3>Affordability</h3>
-                    <p>Cost represents a significant barrier to accessing healthy food in Vallejo. Several factors contribute to this issue:</p>
-                    
-                    <ul>
-                        <li>High standard cost of living in the Bay Area</li>
-                        <li>Limited shopping options leading to reliance on convenience stores with higher prices</li>
-                        <li>Small, local markets charging premium prices</li>
-                    </ul>
-                    
-                    <div class="quote">
-                        "[Small, local grocery stores] are my closest stores; we only do small shopping there as things are pricier."
-                    </div>
-                    
-                    <div class="quote">
-                        "Oftentimes we don't buy specific (healthy) foods because of its cost."
-                    </div>
-                    
-                    <p>The combination of transportation limitations and lack of full-service grocery stores in certain neighborhoods forces many residents to rely on more expensive local shops:</p>
-                    
-                    <div class="quote">
-                        "Both (smaller, local stores) have mainly everything but like I said less quality for a higher price."
-                    </div>
-                    
-                    <p>The price premium for organic options presents an additional barrier for those seeking healthier options:</p>
-                    
-                    <div class="quote">
-                        "Especially when it is organic. It is usually more expensive. So I usually buy the less expensive ones 'cause it is cheaper."
-                    </div>
-                </div>
-                
-                <div id="lack-full-service">
-                    <h3>Lack of Full-Service Grocery Stores</h3>
-                    <p>Across Vallejo, residents reported a scarcity of options for purchasing food. The limited full-service grocery stores include:</p>
-                    
-                    <ul>
-                        <li>Grocery Outlet</li>
-                        <li>The Dollar Store</li>
-                        <li>99 Cents Only Store</li>
-                        <li>Smart & Final</li>
-                        <li>Safeway (often noted as too expensive)</li>
-                    </ul>
-                    
-                    <p>In addition to these stores, residents purchase food at small local businesses, though these often come with higher prices and limited selection.</p>
-                    
-                    <p>The loss of key grocery stores, such as Raley's, has further limited access to quality food options:</p>
-                    
-                    <div class="quote">
-                        "This town should have a health food store and organic market like Marin County where I'm from, but I don't see any other place here where I can pick up that kind of food. Raley's is going out (of business), you know, they had real good quality stuff there."
-                    </div>
-                </div>
-                
-                <div id="meal-adaptation">
-                    <h3>Lack of Access Leads to Adapting Meals</h3>
-                    <p>The limited availability of ingredients forces residents to adapt their meal planning and cooking. Participants described having to:</p>
-                    
-                    <ul>
-                        <li>Change planned meals due to missing ingredients</li>
-                        <li>Visit multiple stores to gather all needed items</li>
-                        <li>Abandon certain recipes due to the effort required to source ingredients</li>
-                    </ul>
-                    
-                    <div class="quote">
-                        "Disappointed, if I'm wanting to make something or do something and I can't make it then I'm disappointed."
-                    </div>
-                    
-                    <div class="quote">
-                        "If I have to cook a meal, and then, man, I have to go to Food Max for this and then the Filipino place for that, do I give up that meal? Sometimes I do; it's not worth it for me to do all that."
-                    </div>
-                    
-                    <p>Most focus group participants discussed visiting multiple stores to acquire the food they need, sharing tips on where to find the cheapest and best quality produce and food products, including cauliflower, peppers, green beans, avocados, and tortillas.</p>
-                </div>
-                
-                <div id="poor-quality">
-                    <h3>Poor Food Quality</h3>
-                    <p>Stores that sell food but are not full-service grocery stores frequently have food options of poor quality, making them less desirable for cooking. Quality issues include:</p>
-                    
-                    <ul>
-                        <li>Rotten or spoiled produce</li>
-                        <li>Expired food products</li>
-                        <li>Deceptive practices (moving expired products to the front)</li>
-                    </ul>
-                    
-                    <div class="quote">
-                        "Yeah, old burritos, yeah, they put the new ones in the back and the old ones in the front."
-                    </div>
-                    
-                    <div class="quote">
-                        "The thing is, though, you have to eat it (the food) right away, the 99 cent store, you cannot store it (the food); it will go bad."
-                    </div>
-                    
-                    <p>These quality issues create frustration and mistrust toward local food retailers and further limit viable food options for residents.</p>
-                </div>
-                
-                <div id="donated-foods">
-                    <h3>Problems with Donated Foods</h3>
-                    <p>While many participants expressed appreciation for local food banks that increase access to affordable foods, the quality of donated items was frequently problematic:</p>
-                    
-                    <ul>
-                        <li>Bread and vegetables that were rotten or moldy</li>
-                        <li>Substandard food through church donation programs</li>
-                        <li>Expired canned food products</li>
-                    </ul>
-                    
-                    <p>The Food Empowerment Project (F.E.P.) expressed particular concern that organizations professing to provide for the nutritional needs of low-income and elderly people are in some cases providing food that could worsen their situation. Though beyond the scope of this study, the practices of food banks and other food donation centers deserve further scrutiny.</p>
-                </div>
-            </section>
-            
-            <section id="survey-results">
-                <h2>Survey Results</h2>
-                
-                <p>To complement the qualitative focus group data, researchers conducted a comprehensive survey of 70 food retail establishments throughout Vallejo. The findings highlight systemic issues in food access that disproportionately impact low-income neighborhoods.</p>
-                
-                <div id="store-types">
-                    <h3>Types of Stores</h3>
-                    
-                    <p>The distribution of store types varies significantly between high-income and low-income neighborhoods, with concerning implications for food access:</p>
-                    
-                    <div class="two-column">
-                        <div class="chart-container">
-                            <h4>Low-Income Neighborhoods</h4>
-                            <ul>
-                                <li>Grocery Stores: 12%</li>
-                                <li>Convenience Stores: 46%</li>
-                                <li>Liquor Stores: 29%</li>
-                                <li>Specialty Stores: 13%</li>
-                            </ul>
-                            <p><strong>Total: 48 stores</strong></p>
-                        </div>
-                        
-                        <div class="chart-container">
-                            <h4>High-Income Neighborhoods</h4>
-                            <ul>
-                                <li>Grocery Stores: 36%</li>
-                                <li>Convenience Stores: 41%</li>
-                                <li>Liquor Stores: 9%</li>
-                                <li>Specialty Stores: 14%</li>
-                            </ul>
-                            <p><strong>Total: 22 stores</strong></p>
-                        </div>
-                    </div>
-                    
-                    <div class="key-finding">
-                        <h4>Key Finding</h4>
-                        <p>Eighty-eight percent of all liquor stores and 71% of all convenience stores in Vallejo are located in low-income neighborhoods. There is a liquor store for every 2,769 residents in low-income areas, compared to every 51,041 residents in high-income neighborhoods.</p>
-                    </div>
-                    
-                    <p>In low-income neighborhoods, three-quarters (75.5%) of all stores are liquor stores, corner stores, or convenience stores. Of these 35 stores, about one-third sell no produce or fewer than 5 types of produce. Sixty percent of those stores that do sell produce provide all or almost all of it only in cans. However, 91% of these stores sell beer, wine and/or liquor.</p>
-                </div>
-                
-                <div id="produce-availability">
-                    <h3>Produce Availability</h3>
-                    
-                    <p>The study recorded the availability of 119 types of fruits and vegetables in fresh, frozen, and canned/jarred versions across the surveyed stores. Key findings include:</p>
-                    
-                    <ul>
-                        <li>In high-income areas, about 22.7% of stores had fewer than 10 types of produce available in any version</li>
-                        <li>In low-income neighborhoods, 50% of stores had fewer than 10 types of produce</li>
-                    </ul>
-                    
-                    <p>This disparity highlights that despite having more stores numerically (48 compared to 22), low-income neighborhoods have reduced access to produce variety because the additional stores tend to be liquor, corner, and convenience stores with limited fresh food options.</p>
-                    
-                    <div class="highlight-box">
-                        <h4>Store Grading Methodology</h4>
-                        <p>Each store received a grade based on five criteria:</p>
-                        <ol>
-                            <li>Variety of produce available</li>
-                            <li>Amount of produce available in fresh versions</li>
-                            <li>Amount of produce available in organic versions</li>
-                            <li>Amount of produce available only in conventional versions</li>
-                            <li>Amount of produce available only in canned/jarred versions</li>
-                        </ol>
-                        <p>Grades ranged from A to F, with higher grades indicating better overall access and quality.</p>
-                    </div>
-                    
-                    <div class="key-finding">
-                        <h4>Store Grading Results</h4>
-                        <p>No stores in Vallejo received an "A" grade. The stores with the best grades (B) tended to be grocery stores located in higher-income areas. In low-income areas, stores with a middling grade of C were primarily grocery stores clustered in the central-northern part of Vallejo, leaving many in the southern and southwestern neighborhoods without easy access to a grocery store.</p>
-                    </div>
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Produce Type</th>
-                                <th>Version</th>
-                                <th>Low Income (FPL ≥ 20%)</th>
-                                <th>High Income</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="2">Fresh Fruits</td>
-                                <td>Conventional</td>
-                                <td>54.2%</td>
-                                <td>50.0%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>4.2%</td>
-                                <td>18.2%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Fresh Vegetables</td>
-                                <td>Conventional</td>
-                                <td>43.8%</td>
-                                <td>54.5%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>16.7%</td>
-                                <td>27.3%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Frozen Fruits</td>
-                                <td>Conventional</td>
-                                <td>18.8%</td>
-                                <td>27.3%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>2.1%</td>
-                                <td>18.2%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Frozen Vegetables</td>
-                                <td>Conventional</td>
-                                <td>29.2%</td>
-                                <td>54.5%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>6.3%</td>
-                                <td>22.7%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Canned Fruits</td>
-                                <td>Conventional</td>
-                                <td>83.3%</td>
-                                <td>86.4%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>10.5%</td>
-                                <td>13.6%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">Canned Vegetables</td>
-                                <td>Conventional</td>
-                                <td>85.5%</td>
-                                <td>95.5%</td>
-                            </tr>
-                            <tr>
-                                <td>Organic</td>
-                                <td>18.8%</td>
-                                <td>40.9%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div id="fresh-produce">
-                    <h3>Fresh Produce Access</h3>
-                    
-                    <p>Fresh produce is particularly important for healthy meal preparation and snacking. The survey found significant barriers to accessing fresh produce in Vallejo:</p>
-                    
-                    <ul>
-                        <li>Over 25% of stores in both high and low-income neighborhoods have no fresh produce available</li>
-                        <li>Only 10 stores throughout Vallejo have salad bars</li>
-                        <li>While 40.9% of stores in high-income areas promote fresh produce through endcaps and special displays, only 16.7% of stores in low-income neighborhoods do the same</li>
-                    </ul>
-                    
-                    <div class="key-finding">
-                        <h4>Cleanliness Concerns</h4>
-                        <p>Over 50% of stores in low-income neighborhoods were evaluated as not providing "a clean and sanitary environment for fresh fruits and vegetables," further limiting the appeal and safety of available produce.</p>
-                    </div>
-                    
-                    <p>The combination of limited availability, poor quality, and sanitation concerns creates significant challenges for residents attempting to maintain healthy diets rich in fresh fruits and vegetables.</p>
-                </div>
-            </section>
-            
-            <section id="equity-issues">
-                <h2>Environmental Justice & Equity</h2>
-                
-                <div id="environmental-justice">
-                    <h3>Environmental Justice/Environmental Racism</h3>
-                    
-                    <p>The food access challenges in Vallejo represent a form of environmental injustice that disproportionately affects communities of color and low-income residents.</p>
-                    
-                    <div class="highlight-box">
-                        <h4>Defining Environmental Justice</h4>
-                        <p>In 1991, the First National People of Color Environmental Leadership Summit drafted and adopted 17 principles of environmental justice. In essence, environmental justice encompasses where "we live, work and play, go to school (and sometimes it includes to pray)."</p>
-                    </div>
-                    
-                    <p>Environmental racism includes both the intended and unintended consequences of environmental rules and regulations, which are often lax or unenforced, directly impacting people of color.</p>
-                    
-                    <div class="key-finding">
-                        <h4>Food Access as Environmental Racism</h4>
-                        <p>The lack of healthy foods in communities of color and low-income communities is something that the Food Empowerment Project views as a form of environmental racism. Simple terms such as "food deserts" and "food security issues" should not mask the huge problem that is the reality for many of those living in the United States.</p>
-                    </div>
-                </div>
-                
-                <div id="health-communities">
-                    <h3>Health of Communities of Color in California</h3>
-                    
-                    <h4>Lack of Access to Healthy Foods</h4>
-                    
-                    <p>The United States Department of Agriculture defines food deserts as:</p>
-                    
-                    <div class="quote">
-                        "[U]rban neighborhoods and rural towns without ready access to fresh, healthy, and affordable food. Instead of supermarkets and grocery stores, these communities may have no food access or are served only by fast food restaurants and convenience stores that offer few healthy, affordable food options."
-                    </div>
-                    
-                    <p>However, this definition has limitations. The Food Empowerment Project notes that this is a narrow view of the problem that doesn't account for:</p>
-                    
-                    <ul>
-                        <li>People who are time-poor as well as cash-poor</li>
-                        <li>The significant barrier that cost presents</li>
-                        <li>Cultural appropriateness of available foods</li>
-                    </ul>
-                    
-                    <p>A more comprehensive understanding recognizes that adequate access to food means that nutritious and culturally appropriate foods must be available on a consistent basis, at an affordable price, and within a reasonable distance among communities.</p>
-                </div>
-            </section>
-            
-            <section id="conclusion">
-                <h2>Conclusion & Recommendations</h2>
-                
-                <p>The comprehensive analysis of food access in Vallejo reveals systemic challenges that disproportionately affect low-income neighborhoods and communities of color. These issues represent a form of environmental injustice that impacts the health and well-being of residents.</p>
-                
-                <div class="key-finding">
-                    <h4>Summary of Key Findings</h4>
-                    <ul>
-                        <li>Low-income neighborhoods have a higher concentration of liquor stores and convenience stores with limited healthy options</li>
-                        <li>Store location and transportation barriers limit residents' ability to access nutritious food</li>
-                        <li>Affordability remains a significant challenge, particularly for healthier and organic options</li>
-                        <li>Food quality issues, including sanitation concerns, further restrict viable food options</li>
-                        <li>Even when stores are present, they often lack adequate fresh produce</li>
+                        <li>About 8.3 % of Solano County’s population (~37 290 people) experiences food insecurity</li>
+                        <li>Child food-insecurity rate is ~16 % (~15 810 children)</li>
+                        <li>≈ 1 in 6 children lack consistent access to adequate food</li>
+                        <li>Student surveys show varied awareness of peer food insecurity</li>
                     </ul>
                 </div>
-                
-                <h3>Recommendations for Action</h3>
-                <p>Based on the findings of this research, several approaches could improve food access in Vallejo:</p>
-                
-                <ol>
-                    <li><strong>Policy Interventions</strong>: Zoning changes to limit the concentration of liquor stores and encourage full-service grocery stores in underserved areas</li>
-                    <li><strong>Transportation Solutions</strong>: Improved public transit routes to connect food desert neighborhoods with quality grocery options</li>
-                    <li><strong>Community-Based Programs</strong>: Support for local farmers markets, community gardens, and mobile produce vendors</li>
-                    <li><strong>Food Assistance Quality Control</strong>: Better oversight of donated food quality at food banks and pantries</li>
-                    <li><strong>Economic Incentives</strong>: Programs to make healthy food more affordable and financially viable for retailers in low-income areas</li>
-                </ol>
-                
-                <div class="highlight-box" style="margin-top: 3rem; text-align: center;">
-                    <h3>Scan the QR Code for Document Review Questions</h3>
-                    <p>Use your smartphone camera to scan this code for access to the questionnaire</p>
-                    <img src="QR Code Food Access Document Review Questions.png" alt="QR Code for Document Review Questions" style="max-width: 200px; margin: 1rem auto; display: block;">
+                <div class="finding-card">
+                    <h4>Academic Performance Connection</h4>
+                    <ul>
+                        <li>Students recognise hunger affects concentration</li>
+                        <li>Higher food-insecurity correlates with lower GPAs</li>
+                        <li>Vallejo academic outcomes lag county averages</li>
+                        <li>Research links hunger to impaired cognitive development</li>
+                    </ul>
                 </div>
-                        
+            </div>
+            <div class="data-chart">
+                <h3 class="chart-title">Food Insecurity vs. Academic Performance</h3>
+                <div class="chart-container">
+                    <div class="bar" style="height: 80%; width: 20%; left: 20%; background-color: var(--accent-color);"><div class="value">3.2 GPA</div><div class="label">Low Food Insecurity</div></div>
+                    <div class="bar" style="height: 65%; width: 20%; left: 45%; background-color: var(--accent-color);"><div class="value">2.7 GPA</div><div class="label">Moderate Food Insecurity</div></div>
+                    <div class="bar" style="height: 50%; width: 20%; left: 70%; background-color: var(--accent-color);"><div class="value">2.3 GPA</div><div class="label">High Food Insecurity</div></div>
+                </div>
+                <p><em>Data show correlation between increasing food insecurity and decreasing academic performance among Vallejo students.</em></p>
+            </div>
+        </section>
+
+        <!-- =================================================
+             Barriers Section
+        ================================================= -->
+        <section id="barriers">
+            <h2 class="section-title">Major Barriers to Food Access</h2>
+            <p>Focus groups and surveys identified six major barriers that interact to create a complex web of challenges for residents seeking healthy food.</p>
+            <div class="two-column">
+                <div class="finding-card">
+                    <h4>Store Location &amp; Transportation</h4>
+                    <ul>
+                        <li>Grocery stores distant from residential areas</li>
+                        <li>Limited sidewalk infrastructure reduces walkability</li>
+                        <li>Sparse bus routes and long commutes to stores</li>
+                        <li>Difficulty carrying groceries when using public transport</li>
+                        <li>Lack of personal vehicles compounds access issues</li>
+                    </ul>
+                    <div class="quote">“Riding the bus, I can only have one batch as I have a purse… there’s a walking distance.”</div>
+                </div>
+                <div class="finding-card">
+                    <h4>Affordability Challenges</h4>
+                    <ul>
+                        <li>Prices higher at convenience and corner stores</li>
+                        <li>Organic / healthier options often premium-priced</li>
+                        <li>Families forced to prioritise essentials over nutrition</li>
+                        <li>Low-income households spend ≈ 32–33 % of income on food</li>
+                        <li>Students skip healthy foods due to cost barriers</li>
+                    </ul>
+                    <div class="quote">“Oftentimes we don’t buy specific <em>healthy</em> foods because of its cost.”</div>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="finding-card">
+                    <h4>Limited Food-Store Options</h4>
+                    <ul>
+                        <li>Low-income areas host proportionally fewer grocery stores</li>
+                        <li>Only ~12 % of stores in these areas are full-service groceries</li>
+                        <li>High density of convenience (46 %) and liquor stores (29 %)</li>
+                        <li>Closure of key stores (e.g., Raley’s) further reduced options</li>
+                    </ul>
+                </div>
+                <div class="finding-card">
+                    <h4>Poor Food Quality</h4>
+                    <ul>
+                        <li>Non-grocery retailers offer lower-quality produce</li>
+                        <li>Rotten or expired products commonly observed</li>
+                        <li>> 50 % of stores fail to maintain sanitary produce areas</li>
+                        <li>Quality concerns extend to some donated foods</li>
+                    </ul>
+                    <div class="quote">“You have to eat it right away… you cannot store it; it will go bad.”</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             Geographic Section
+        ================================================= -->
+        <section id="geographic">
+            <h2 class="section-title">Geographic Disparities in Food Access</h2>
+            <p>Food access is not distributed equitably throughout Vallejo. Low-income neighbourhoods face “food-desert” conditions whereas higher-income areas enjoy better-quality retail options.</p>
+            <div class="highlight">
+                <h4>Key Finding: Store Distribution</h4>
+                <p>88 % of liquor stores and 71 % of convenience stores are clustered in low-income neighbourhoods — a liquor store for every 2 769 residents versus one per 51 041 in high-income areas.</p>
+            </div>
+            <div class="two-column">
+                <div class="data-chart">
+                    <h3 class="chart-title">Store Types – Low-Income Areas</h3>
+                    <div class="chart-container">
+                        <div class="bar" style="height: 12%; width: 20%; left: 10%;  background-color: var(--accent-color);"><div class="value">12 %</div><div class="label">Grocery</div></div>
+                        <div class="bar" style="height: 46%; width: 20%; left: 35%; background-color: var(--additional-color);"><div class="value">46 %</div><div class="label">Convenience</div></div>
+                        <div class="bar" style="height: 29%; width: 20%; left: 60%; background-color: #ffffff;"><div class="value" style="color:#000">29 %</div><div class="label" style="color:#000">Liquor</div></div>
+                    </div>
+                </div>
+                <div class="data-chart">
+                    <h3 class="chart-title">Store Types – High-Income Areas</h3>
+                    <div class="chart-container">
+                        <div class="bar" style="height: 36%; width: 20%; left: 10%;  background-color: var(--accent-color);"><div class="value">36 %</div><div class="label">Grocery</div></div>
+                        <div class="bar" style="height: 41%; width: 20%; left: 35%; background-color: var(--additional-color);"><div class="value">41 %</div><div class="label">Convenience</div></div>
+                        <div class="bar" style="height: 9%;  width: 20%; left: 60%; background-color: #ffffff;"><div class="value" style="color:#000">9 %</div><div class="label" style="color:#000">Liquor</div></div>
+                    </div>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Low-Income</th>
+                        <th>High-Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Stores with &lt; 10 produce types</td><td>50 %</td><td>22.7 %</td></tr>
+                    <tr><td>Organic fruit available</td><td>4.2 %</td><td>18.2 %</td></tr>
+                    <tr><td>Organic vegetables available</td><td>16.7 %</td><td>27.3 %</td></tr>
+                    <tr><td>Produce promotion (endcaps/displays)</td><td>16.7 %</td><td>40.9 %</td></tr>
+                </tbody>
+            </table>
+            <div class="highlight">
+                <h4>Environmental Justice Concern</h4>
+                <p>The Food Empowerment Project considers the lack of healthy foods in communities of colour and low-income areas a form of environmental racism. Vallejo’s distribution patterns mirror broader inequities in health outcomes.</p>
+            </div>
+        </section>
+
+        <!-- =================================================
+             Academic Section
+        ================================================= -->
+        <section id="academic">
+            <h2 class="section-title">Impact on Academic Performance</h2>
+            <p>Research and student testimonials confirm that food insecurity impairs learning through physical and psychological pathways.</p>
+            <div class="two-column">
+                <div class="finding-card">
+                    <h4>Student Perspectives</h4>
+                    <ul>
+                        <li>“It could increase the stress level by a lot.”</li>
+                        <li>Students link nutrition directly to focus and brain function</li>
+                        <li>Hunger creates distraction and fatigue</li>
+                    </ul>
+                </div>
+                <div class="finding-card">
+                    <h4>Research Evidence</h4>
+                    <ul>
+                        <li>Food insecurity impairs cognitive development</li>
+                        <li>Poor diet significantly affects student achievement</li>
+                        <li>Food-insecure students less likely to earn high GPAs</li>
+                        <li>Vallejo test scores trail county benchmarks</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight">
+                <h4>Breakfast Matters</h4>
+                <p>Over half of Vallejo secondary students report skipping breakfast. Statewide, breakfast participation aligns with parent education level: only 46 % of students whose parents didn’t finish high school eat breakfast versus 60 %+ whose parents have higher education.</p>
+            </div>
+        </section>
+
+        <!-- =================================================
+             Mental Health Section
+        ================================================= -->
+        <section id="mental-health">
+            <h2 class="section-title">Impact on Mental Health</h2>
+            <p>Food insecurity significantly affects mental wellbeing, creating a bidirectional relationship where poor mental health and food insecurity reinforce one another.</p>
+            <div class="two-column">
+                <div class="finding-card">
+                    <h4>Psychological Impacts</h4>
+                    <ul>
+                        <li>Chronic food insecurity generates toxic stress, anxiety, and depression</li>
+                        <li>Constant worry about meals causes ongoing psychological distress</li>
+                        <li>Students report heightened stress when facing hunger</li>
+                        <li>Nutrient deficiencies can impair emotional regulation</li>
+                    </ul>
+                </div>
+                <div class="finding-card">
+                    <h4>Syndemic Relationship</h4>
+                    <ul>
+                        <li>Mental-health challenges and food insecurity share root causes</li>
+                        <li>Psychological distress can reduce healthcare-seeking behaviour</li>
+                        <li>Depression diminishes self-efficacy in seeking assistance</li>
+                        <li>Communities with high food insecurity exhibit elevated mental-health concerns</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight">
+                <h4>Geographic Convergence</h4>
+                <p>Studies show mental-health challenges and food insecurity cluster in Central and North Vallejo, compounding community risk.</p>
+            </div>
+        </section>
+
+        <!-- =================================================
+             Behavioural Impact Section
+        ================================================= -->
+        <section id="behavior">
+            <h2 class="section-title">Impact on Behaviour</h2>
+            <p>Food insecurity influences adaptive and risk behaviours that can further compromise health outcomes.</p>
+            <div class="two-column">
+                <div class="finding-card">
+                    <h4>Adaptive Behaviours</h4>
+                    <ul>
+                        <li>Families visit multiple stores to find affordable food</li>
+                        <li>Planned meals abandoned due to unavailable ingredients</li>
+                        <li>Parents reduce their own portions to feed children</li>
+                        <li>Shopping patterns prioritise immediate caloric needs</li>
+                    </ul>
+                    <div class="quote">“If I have to cook a meal, then go to Food Max for this and the Filipino place for that… sometimes I give up that meal; it’s not worth it.”</div>
+                </div>
+                <div class="finding-card">
+                    <h4>Risk Behaviours</h4>
+                    <ul>
+                        <li>Food-insecure individuals 1.5–1.6 × more likely to engage in STI-risk behaviours</li>
+                        <li>Economic pressure may lead to transactional relationships or “survival sex”</li>
+                        <li>Higher substance use as a coping mechanism for hunger-related stress</li>
+                        <li>Increased likelihood of skipping healthcare to afford food</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight">
+                <h4>Youth-Specific Concerns</h4>
+                <p>Urban Institute research found teens in high-poverty, food-insecure communities sometimes resort to transactional dating to obtain meals, highlighting serious long-term consequences.</p>
+            </div>
+        </section>
+
+        <!-- =================================================
+             Recommendations Section
+        ================================================= -->
+        <section id="recommendations">
+            <h2 class="section-title">Recommendations for Action</h2>
+            <p>Based on our analysis of food-access challenges, the following policy and community strategies could improve food security for Vallejo residents—especially in low-income neighbourhoods.</p>
+            <div class="two-column">
+                <div class="finding-card">
+                    <h4>Policy &amp; Infrastructure</h4>
+                    <ul>
+                        <li>Improve public transport routes to grocery stores</li>
+                        <li>Create zoning incentives for new groceries in underserved areas</li>
+                        <li>Limit liquor-store density in vulnerable neighbourhoods</li>
+                        <li>Expand free / reduced-meal programmes in schools</li>
+                        <li>Support mobile produce vendors and farmers’ markets</li>
+                    </ul>
+                </div>
+                <div class="finding-card">
+                    <h4>Community &amp; Education Initiatives</h4>
+                    <ul>
+                        <li>Develop dedicated campus food pantries</li>
+                        <li>Implement grocery / meal-voucher schemes</li>
+                        <li>Offer regular nutrition workshops for families</li>
+                        <li>Establish community gardens in food deserts</li>
+                        <li>Encourage food-sharing and redistribution programmes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight">
+                <h4>Role of School Staff</h4>
+                <ul>
+                    <li>Discreetly refer students to meal resources and food pantries</li>
+                    <li>Organise donation drives or snack funds in classrooms</li>
+                    <li>Advocate for increased programme funding and policy change</li>
+                    <li>Privately check in with students who may be missing meals</li>
+                    <li>Offer flexible lunch schedules or additional meal times</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- =================================================
+             Footer
+        ================================================= -->
+        <div class="footer">
+            <p>Club Stride Inc.</p>
+            <!-- <p>Session 7 | 29 Apr 2025</p> -->
+            <p>Contact: javier@clubstride.org | (707) 204-3160</p>
+        </div>
+    </div>
+</body>
+</html>
